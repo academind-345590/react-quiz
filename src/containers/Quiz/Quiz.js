@@ -6,14 +6,20 @@ class Quiz extends React.Component {
   state = {
     quiz: [
       {
+        question: 'Сколько пальцев на руке ?',
+        rightAnswerId: 3,
         answers: [
-          {text: 'Вопрос 1'},
-          {text: 'Вопрос 2'},
-          {text: 'Вопрос 3'},
-          {text: 'Вопрос 4'},
+          {id: 1, text: 'Один'},
+          {id: 2, text: 'Три'},
+          {id: 3, text: 'Пять'},
+          {id: 4, text: 'Девять'},
         ]
       }
     ]
+  }
+
+  onAnswerClickHandler = answerId => {
+    console.log('Answer ID: ', answerId);
   }
 
   render(){
@@ -23,6 +29,8 @@ class Quiz extends React.Component {
           <h1>Выберите правильный ответ(ы):</h1>
           <ActiveQuiz 
             answers = {this.state.quiz[0].answers}
+            question = {this.state.quiz[0].question}
+            onAnswerClick = {this.onAnswerClickHandler}
           />
         </div>
       </div>
