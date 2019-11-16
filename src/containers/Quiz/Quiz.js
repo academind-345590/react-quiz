@@ -4,8 +4,10 @@ import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
 
 class Quiz extends React.Component {
   state = {
+    activeQuestion: 0,
     quiz: [
       {
+        id: 1,
         question: 'Сколько пальцев на руке ?',
         rightAnswerId: 3,
         answers: [
@@ -14,12 +16,27 @@ class Quiz extends React.Component {
           {id: 3, text: 'Пять'},
           {id: 4, text: 'Девять'},
         ]
+      },
+      {
+        id: 2,
+        question: 'Как называется спутник Земли ?',
+        rightAnswerId: 4,
+        answers: [
+          {id: 1, text: 'Таллос'},
+          {id: 2, text: 'Иа'},
+          {id: 3, text: 'Фобос'},
+          {id: 4, text: 'Луна'},
+        ]
       }
     ]
   }
 
   onAnswerClickHandler = answerId => {
     console.log('Answer ID: ', answerId);
+
+    this.setState({
+      activeQuestion: this.state.activeQuestion + 1
+    })
   }
 
   render(){
@@ -28,9 +45,11 @@ class Quiz extends React.Component {
         <div className={classes.QuizWrapper}>
           <h1>Выберите правильный ответ(ы):</h1>
           <ActiveQuiz 
-            answers = {this.state.quiz[0].answers}
-            question = {this.state.quiz[0].question}
+            answers = {this.state.quiz[this.state.activeQuestion].answers}
+            question = {this.state.quiz[this.state.activeQuestion].question}
             onAnswerClick = {this.onAnswerClickHandler}
+            quizLength = {this.state.quiz.length}
+            answerNumber = {this.state.activeQuestion + 1}
           />
         </div>
       </div>
