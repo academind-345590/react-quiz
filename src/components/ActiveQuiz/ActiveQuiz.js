@@ -1,23 +1,20 @@
 import React from 'react';
 import classes from './ActiveQuiz.css';
+import AnswerList from './AnswerList/AnswerList';
 
 const ActiveQuiz = props => (
   <div className={classes.ActiveQuiz}>
     <p className={classes.Questions}>
       <span>
-        <strong>2.2.</strong>&nbsp;
-        How do you do?
+        <strong>2.</strong>&nbsp;
+        Как дела ?
       </span>
-      <small>5 from 5</small>
+      <small>5 из 5</small>
     </p>
 
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-      <li>5</li>
-    </ul>
+    <AnswerList 
+      answers = {props.answers}
+    />
   </div>
 )
 
