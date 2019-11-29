@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Auth.css';
 import Button from '../../components/UI/Button/Button';
+import Imput from '../../components/UI/Input/Input';
 
 export default class Auth extends React.Component {
 
@@ -26,8 +27,8 @@ export default class Auth extends React.Component {
             onSubmit={this.submitHandler}
             className={classes.AuthForm}
           >
-            <input text="text" />
-            <input text="text" />
+            <Imput label="Email" />
+            <Imput label="Пароль" />
 
             <Button 
               type="success" 

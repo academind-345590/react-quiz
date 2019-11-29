@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './Imput.css';
+import classes from './Input.css';
 
-const Imput = props => {
+const Input = props => {
 
   const inputType = props.type || 'text';
-  const cls = [classes.Imput];
+  const cls = [classes.Input];
   const htmlFor = `${inputType}-${Math.random()}`;
 
   return (
@@ -22,4 +22,4 @@ const Imput = props => {
   )
 }
 
-export default Imput
+export default Input
