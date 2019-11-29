@@ -27,8 +27,13 @@ export default class Auth extends React.Component {
             onSubmit={this.submitHandler}
             className={classes.AuthForm}
           >
-            <Imput label="Email" />
-            <Imput label="Пароль" />
+            <Imput 
+              label="Email" 
+            />
+            <Imput 
+              label="Пароль" 
+              errorMessage={'TEST'}
+            />
 
             <Button 
               type="success" 
