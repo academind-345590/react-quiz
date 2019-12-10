@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import classes from './QuizList.css';
-import axios from 'axios';
+//import axios from 'axios';
 
 export default class QuizList extends React.Component {
 
@@ -20,12 +20,12 @@ export default class QuizList extends React.Component {
   }
 
   // test axios & Firebase, in fb create table quiz
-  componentDidMount() {
-    axios.get('https://react-quiz-2d795.firebaseio.com/quiz.json')
-      .then(response => {
-        console.log(response);
-      })
-  }
+  // componentDidMount() {
+  //   axios.get('https://react-quiz-2d795.firebaseio.com/quiz.json')
+  //     .then(response => {
+  //       console.log(response);
+  //     })
+  // }
 
   render() {
     return (
