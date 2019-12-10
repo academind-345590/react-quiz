@@ -1,31 +1,48 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import classes from './QuizList.css';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default class QuizList extends React.Component {
 
+  state = {
+    quizes: []
+  }
+
   renderQuizes() {
-    return ['one','two','three'].map((quiz, index) =>{
+    return this.state.quizes.map((quiz) =>{
       return (
         <li
-          key = {index}
+          key = {quiz.id}
         >
-          <NavLink to={'/quiz/'+ quiz}>
-            Test {quiz}
+          <NavLink to={'/quiz/'+ quiz.id}>
+            {quiz.name}
           </NavLink>
         </li>
       )
     })
   }
 
-  // test axios & Firebase, in fb create table quiz
-  // componentDidMount() {
-  //   axios.get('https://react-quiz-2d795.firebaseio.com/quiz.json')
-  //     .then(response => {
-  //       console.log(response);
-  //     })
-  // }
+  async componentDidMount() {
+    try{
+      const response = await axios.get('https://react-quiz-2d795.firebaseio.com/quizes.json');
+      const quizes = [];
+
+      Object.keys(response.data).forEach((key, index)=>{
+        quizes.push({
+          id: key,
+          name: `Тест №${index+1}`
+        })
+      })
+
+      this.setState({
+        quizes
+      })
+    } catch (e) {
+      console.log(e);
+    }
+    
+  }
 
   render() {
     return (
