@@ -1,5 +1,9 @@
 import { 
   FETCH_QUIZES_START, 
+  QUIZ_SET_STATE,
+  FINISH_QUIZ,
+  QUIZ_RETRY,
+  QUIZ_NEXT_QUESTION,
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZES_SUCCESS, 
   FETCH_QUIZES_ERROR } from "../actions/actionTypes"
@@ -35,6 +39,26 @@ export default function quizReduser(state= initialState, action){
     case FETCH_QUIZ_SUCCESS:
       return {
         ...state, loading: false, quiz: action.quiz
+      }
+    case QUIZ_SET_STATE:
+      return {
+        ...state, answerState: action.answerState, results: action.results
+      }
+    case FINISH_QUIZ:
+      return {
+        ...state, isFinished: true
+      }
+    case QUIZ_NEXT_QUESTION:
+      return {
+        ...state, answerState: null, activeQuestion: action.number
+      }
+    case QUIZ_RETRY:
+      return {
+        ...state,
+        results: {},
+        isFinished: false,
+        activeQuestion: 0,
+        answerState: null, 
       }
     default:
       return state
