@@ -89,10 +89,6 @@ export function quizNextQuestion(number){
   }
 }
 
-function isQuizFinished(state){
-  return state.activeQuestion + 1 === state.quiz.length
-}
-
 export function retryQuiz (){
   return {
     type: QUIZ_RETRY
@@ -115,10 +111,9 @@ export function quizAnswerClick(answerId){
     
     if(question.rightAnswerId === answerId) {
       
-      if(! results[question.id]){
+      if(!results[question.id]){
         results[question.id] = 'success'
       }
-
       dispatch(quizSetState({[answerId]: 'success'}, results));
       
       const timeout = window.setTimeout(()=>{
@@ -134,4 +129,8 @@ export function quizAnswerClick(answerId){
       dispatch(quizSetState({[answerId]: 'error'}, results));      
     }    
   }
+}
+
+function isQuizFinished(state){
+  return state.activeQuestion + 1 === state.quiz.length
 }

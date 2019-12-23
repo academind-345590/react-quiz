@@ -28,7 +28,7 @@ class Quiz extends React.Component {
                   ? <FinishedQuiz 
                       results = {this.props.results}
                       quiz = {this.props.quiz}
-                      onRetry = {this.retryQuiz}
+                      onRetry = {this.props.retryQuiz}
                   />
                   : <ActiveQuiz 
                       answers = {this.props.quiz[this.props.activeQuestion].answers}

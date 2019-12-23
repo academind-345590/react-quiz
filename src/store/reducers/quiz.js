@@ -54,11 +54,11 @@ export default function quizReduser(state= initialState, action){
       }
     case QUIZ_RETRY:
       return {
-        ...state,
-        results: {},
-        isFinished: false,
+        ...state,    
         activeQuestion: 0,
-        answerState: null, 
+        answerState: null,
+        isFinished: false,
+        results: {}
       }
     default:
       return state
